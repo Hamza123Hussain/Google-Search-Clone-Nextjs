@@ -1,6 +1,6 @@
 'use client'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineSearch } from 'react-icons/ai'
 const HomeSearch = () => {
   const [input, setinput] = useState('')
@@ -8,24 +8,24 @@ const HomeSearch = () => {
   const router = useRouter()
   const handlesubmit = (e) => {
     e.preventDefault()
-
     if (input == '') return
     router.push(`search/web?searchTerm=${input}`)
+    setinput('') // Resetting the input to an empty string
   }
-  const handlekey = (e) => {
-    e.preventDefault()
+
+  const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      handlesubmit(e) // Ensure that the event is passed correctly
+      handlesubmit()
     }
   }
 
-  const randomSearch = async (e) => {
+  const randomSearch = async () => {
     setRandomSearchLoading(true)
     const response = await fetch('https://random-word-api.herokuapp.com/word')
-      .then((res) => res.json())
-      .then((data) => data[0])
+    const data = await response.json()
+    const word = data[0] // the word is stored in it
     if (!response) return
-    router.push(`/search/web?searchTerm=${response}`)
+    router.push(`/search/web?searchTerm=${word}`)
     setRandomSearchLoading(false)
   }
 
@@ -37,7 +37,8 @@ const HomeSearch = () => {
           className="text-xl text-gray-500 mr-3 cursor-pointer"
         />
         <input
-          onKeyUp={handlekey}
+          value={input}
+          onKeyUp={handleKeyPress}
           type="text"
           className="flex-grow focus:outline-none"
           onChange={(e) => setinput(e.target.value)}
