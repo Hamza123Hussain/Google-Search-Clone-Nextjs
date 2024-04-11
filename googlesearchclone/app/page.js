@@ -1,3 +1,4 @@
+import Footer from '@/Components/Footer'
 import HomeHeader from '@/Components/HomeHeader'
 import HomeSearch from '@/Components/HomeSearch'
 import Image from 'next/image'
