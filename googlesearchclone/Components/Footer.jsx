@@ -18,7 +18,7 @@ const Footer = () => {
     getdata()
   }, [])
   return (
-    <footer className=" absolute bottom-0 w-full text-sm bg-[#f2f2f2] text-gray-500  flex flex-col mt-200">
+    <div className="  text-sm bg-[#f2f2f2] text-gray-500  flex flex-col  mt-5 ">
       <div className="p-2 px-6">{country}</div>
       <hr className="  border-2 " />
 
@@ -36,7 +36,7 @@ const Footer = () => {
           <li>Settings</li>
         </ul>
       </div>
-    </footer>
+    </div>
   )
 }
 

@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 const SearchResults = ({ items }) => {
   const itemelements = items.map((element) => (
-    <div key={element.cacheId} className="border-2 border-gray-100 p-4  w-96">
+    <div key={element.cacheId} className=" px-8  py-2.5 lg:px-24  w-fit">
       <h3 className="text-sm text-gray-600 hover:underline">
         {element.link.substring(0, 45)}
       </h3>
@@ -15,10 +15,7 @@ const SearchResults = ({ items }) => {
 
   return (
     <>
-      <div className=" flex flex-col gap-10  pl-10 mt-5 mb-5">
-        {' '}
-        {itemelements}
-      </div>
+      <div className=" flex flex-col mt-5 mb-5"> {itemelements}</div>
     </>
   )
 }

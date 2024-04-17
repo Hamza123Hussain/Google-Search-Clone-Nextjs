@@ -6,12 +6,14 @@ const ImageResults = ({ items }) => {
       <div className="group">
         <Link href={result.image.contextLink}>
           <img
-            src={result.link}
+            src={result.thumbnailLink}
             alt={result.title}
+            width={result.image.thumbnailWidth}
+            height={result.image.thumbnailHeight}
             className="h-60 group-hover:shadow-xl w-full object-contain transition-shadow duration-300"
           />
         </Link>
-        <Link href={result.image.contextLink}>
+        <Link href={result.image.thumbnailLink}>
           <h2 className="group-hover:underline truncate text-xl">
             {result.title}
           </h2>
